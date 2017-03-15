@@ -1,0 +1,30 @@
+{
+  "name": "sg-bookfinder",
+  "version": "1.0.0",
+  "description": "find books at your neighbourhood library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToasterLab/sg-bookfinder.git"
+  },
+  "keywords": [
+    "goodreads",
+    "nlb",
+    "books",
+    "singapore"
+  ],
+  "author": "Huey <leejinhuey@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ToasterLab/sg-bookfinder/issues"
+  },
+  "homepage": "https://github.com/ToasterLab/sg-bookfinder#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "goodreads": "^0.1.0",
+    "nlb": "^1.0.2"
+  }
+}
