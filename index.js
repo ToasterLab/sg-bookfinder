@@ -1,6 +1,11 @@
-const nlb = require("nlb"),
-			dotenv = require("dotenv"),
-			goodreads = require("goodreads")
+const express = require("express"),
+			bookfinder = require("./lib/sg-bookfinder.js");
+			
+let app = express();
 
-dotenv.config() //prepare api keys from .env
+app.use(express.static('public')) // html & bundle.js
+app.use(express.static('./node_modules/bulma/css')) // bulma
 
+app.listen(3000, function () {
+  console.log('Bookfinder listening on port 3000!')
+})
