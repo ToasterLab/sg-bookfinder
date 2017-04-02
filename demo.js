@@ -3,13 +3,11 @@ const bookfinder = require("./lib/sg-bookfinder.js");
 console.log("Grabbing user id");
 
 let continueProcessing = (user) => {
-	let userid = user.id;
-	console.log(`Hi ${user.name}, your user id is ${userid}`);
+	console.log(`Hi ${user.name}, your user id is ${user.id}`);
 	console.log(`Checking books on your to-read shelf`);
-	bookfinder.getBooksOnShelf(userid, "to-read", 50, "a").then((books) => {
+	bookfinder.getBooksOnShelf(user.id, "to-read", 200, "a").then((books) => {
 		console.log(`You have ${books.length} on your to-read shelf`);
 		console.log(`Checking which are available at Bishan Public Library...`);
-		let total = [];
 		books = books.map((book) => {
 			return bookfinder.isBookAvailable(book, "BIPL");
 		});

@@ -4,6 +4,7 @@
   "description": "find books at your neighbourhood library",
   "main": "index.js",
   "scripts": {
+    "browserify": "browserify public/app.js -o public/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,12 +24,18 @@
   },
   "homepage": "https://github.com/ToasterLab/sg-bookfinder#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "bulma": "^0.4.0",
     "dotenv": "*",
     "express": "^4.15.2",
-    "goodreads": "*",
+    "http": "0.0.0",
     "nlb": "*",
-    "vue": "^2.2.4"
+    "oauth": "^0.9.15",
+    "querystring": "^0.2.0",
+    "utils": "^0.3.1",
+    "vue": "^2.2.4",
+    "vue-resource": "^1.2.1",
+    "xml2js": "^0.4.17"
   },
   "devDependencies": {}
 }

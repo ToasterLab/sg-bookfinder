@@ -1,3 +1,3 @@
 #/bin/bash
 
-onchange public/*.pug *.js scripts/*.js lib/*.js -- ./compile.sh
+onchange public/*.pug *.js public/*.js lib/*.js -- ./compile.sh

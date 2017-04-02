@@ -3,6 +3,28 @@ html(lang="en")
 	head
 		title= Bookfinder
 		link(rel='stylesheet' href="bulma.css")
-	body
-		h1 Hello Worlds
 		script(src='bundle.js')
+	body
+		section.section#app
+			.container.is-fluid(v-if='oauth')
+				.columns.is-multiline
+					.column.is-one-quarter(v-for="book in books", @click="openBook(book)")
+						.card
+							.card-image
+								figure.image
+									img(v-bind:src="book.image")
+							.card-content
+								.media
+									.media-content
+										p.title {{book.title}}
+										p.subtitle {{book.authors.author[0].name[0]}}
+								.content
+									p
+									| {{book.description}}
+									p
+										small Published in {{book.published}}
+			.modal(v-if='oauth == false')
+				.modal-background
+				.modal-content
+					p Oops, you're not logged in...
+		script(src='bookfinder.js')
