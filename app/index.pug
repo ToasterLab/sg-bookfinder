@@ -54,7 +54,9 @@ html(lang="en")
 							td
 								figure.image.cover
 									img(v-bind:src="book[0].image")
-							td {{book[0].title}}
+							td
+								a(v-bind:href="book[0].url")
+									| {{book[0].title}}
 							td {{book[0].authors.author[0].name[0]}}
 							td {{book[0].average_rating}}
 							td {{book[0].BranchName}}

@@ -4,10 +4,9 @@
   "description": "find books at your neighbourhood library",
   "main": "index.js",
   "scripts": {
-    "build": "pug public && browserify public/app.js -o public/bundle.js && node index",
+    "build": "pug app -o public && browserify app/app.js -o public/bundle.js && babel app/bookfinder.js --out-file public/bookfinder.js && uglifyjs public/bookfinder.js -c -m -o public/bookfinder.js && uglifyjs public/bundle.js -c -m -o public/bundle.js",
     "browserify": "browserify public/app.js -o public/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && onchange public/*.pug *.js public/*.js lib/*.js -- npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -41,8 +40,24 @@
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
     "browserify": "^14.3.0",
-    "onchange": "^3.2.1",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "uglify-js": "^2.8.22"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 3 versions"
+            ]
+          }
+        }
+      ]
+    ]
   }
 }

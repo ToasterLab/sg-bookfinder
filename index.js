@@ -42,7 +42,7 @@ app.get('/callback', (req, res) => {
 			}
 			curUsers.push(user);
 			fs.writeFileSync("data.json",JSON.stringify(curUsers));
-			res.send(`<script>localStorage.setItem("user", '${JSON.stringify(user)}');window.location.href='http://localhost:3000'</script>`);
+			res.send(`<script>localStorage.setItem("user", '${JSON.stringify(user)}');window.location.href='http://bookfinder.ketupat.me'</script>`);
 		}).catch(err => {console.log(err)})
 	} else {
 		res.send("Oauth denied :(")
@@ -97,6 +97,6 @@ app.ws('/', (ws, req) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('Bookfinder listening on port 3000!')
+app.listen(8085, () => {
+  console.log('Bookfinder listening on port 8085!')
 })
