@@ -2,9 +2,11 @@
 const fs = require("fs"),
 			express = require("express"),
 			bodyParser = require('body-parser'),
+			expressWs = require('express-ws'),
 			bookfinder = require("./lib/sg-bookfinder.js");
 			
-let app = express();
+let app = express()
+let ews = expressWs(app)
 
 app.use(bodyParser.json())       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -47,41 +49,53 @@ app.get('/callback', (req, res) => {
 	}
 })
 
-app.post('/user', (req, res) => {
-	let user = JSON.parse(req.body.user)
-	bookfinder.setOAuth(user.accessToken, user.accessTokenSecret)
-	bookfinder.getUserInfo(user.id).then((user) => {
-  	res.send(user)
-	}).catch(err => res.send(err))
+app.ws('/', (ws, req) => {
+	let wSend = (ws, event, data) => {ws.send(JSON.stringify({event:event,data:data}))}
+  ws.on('message', msg => {
+  	msg = JSON.parse(msg)
+  	console.log(msg)
+  	switch(msg.event){
+  		case "retrieveUser":
+  			let user = msg.data
+  			console.log(`${(new Date()).toLocaleString()} ${JSON.stringify(user)}`)
+  			bookfinder.setOAuth(user.accessToken, user.accessTokenSecret)
+				bookfinder.getUserInfo(user.id).then(user => {
+			  	wSend(ws, "sendUser", user)
+				}).catch(err => wSend(ws, "error", err))
+  			break
+  		
+  		case "getBooks":
+  			let usr = msg.data.user
+  			let assemblyLine = []
+				for(let i=1;i<=Math.ceil(msg.data.selected.slength/100);i++){
+					assemblyLine.push(
+						bookfinder.getBooksOnShelf(usr.id, msg.data.selected.shelf, i, 100, "d")
+					)
+				}
+				let counter = 0
+				let allBooks = []
+				assemblyLine.forEach(p => {
+					p.then(result => {
+						books = result
+						//books = result.reduce((acc, val) => acc.concat(val))
+						books.forEach(book => {
+							bookfinder.isBookAvailable(book, msg.data.selected.lib).then(result => {
+								counter++
+								if(result.length > 0){
+									allBooks.push(result)
+									wSend(ws, "sendBooks", result)
+								}
+								if(counter === parseInt(msg.data.selected.slength)){
+									wSend(ws, "endBooks", allBooks)
+								}
+							}).catch(err => console.error(err))
+						})
+					})
+				})
+  			break
+  	}
+  })
 })
-app.post('/books', (req, res) => {
-	console.log(req.body)
-	let user = JSON.parse(req.body.user)
-	bookfinder.getBooksOnShelf(user.id, req.body.selected.shelf, 150, "d").then((books) => {
-		books = books.map((book) => {
-			return bookfinder.isBookAvailable(book, req.body.selected.lib)
-		})
-		Promise.all(books).then((result) => {
-			result = result.filter(n => n.length>0)
-			res.send(result)
-		}).catch(err => res.send(err))
-	})
-})
-  /*bookfinder.getUserInfo(username).then((user) => {
-  	console.log(user)
-		bookfinder.getBooksOnShelf(user.id, "to-read", 50, "a").then((books) => {
-			res.send(books)
-			books = books.map((book) => {
-				return bookfinder.isBookAvailable(book, "BIPL");
-			});
-			//books = [Promise.resolve(1),Promise.resolve(2),Promise.resolve(3)]
-			Promise.all(books).then((result) => {
-				res.send(result.filter(n => n.length>0));
-			}).catch(err => res.send(err));
-		}).catch(err => res.send(err))
-	}).catch((err) => {
-		throwError(res,err);
-	});*/
 
 app.listen(3000, () => {
   console.log('Bookfinder listening on port 3000!')
