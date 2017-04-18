@@ -1,3 +1,4 @@
+/* jshint asi:true */
 const fs = require("fs"),
 			express = require("express"),
 			bodyParser = require('body-parser'),
@@ -5,7 +6,7 @@ const fs = require("fs"),
 			
 let app = express();
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json())       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
@@ -47,11 +48,25 @@ app.get('/callback', (req, res) => {
 })
 
 app.post('/user', (req, res) => {
-	let user = JSON.parse(req.body.user);
-	bookfinder.setOAuth(user.accessToken, user.accessTokenSecret);
-	bookfinder.getBooksOnShelf(user.id, "to-read", 50, "a").then((books) => {
-		res.send(books);
-	});
+	let user = JSON.parse(req.body.user)
+	bookfinder.setOAuth(user.accessToken, user.accessTokenSecret)
+	bookfinder.getUserInfo(user.id).then((user) => {
+  	res.send(user)
+	}).catch(err => res.send(err))
+})
+app.post('/books', (req, res) => {
+	console.log(req.body)
+	let user = JSON.parse(req.body.user)
+	bookfinder.getBooksOnShelf(user.id, req.body.selected.shelf, 150, "d").then((books) => {
+		books = books.map((book) => {
+			return bookfinder.isBookAvailable(book, req.body.selected.lib)
+		})
+		Promise.all(books).then((result) => {
+			result = result.filter(n => n.length>0)
+			res.send(result)
+		}).catch(err => res.send(err))
+	})
+})
   /*bookfinder.getUserInfo(username).then((user) => {
   	console.log(user)
 		bookfinder.getBooksOnShelf(user.id, "to-read", 50, "a").then((books) => {
@@ -67,7 +82,6 @@ app.post('/user', (req, res) => {
 	}).catch((err) => {
 		throwError(res,err);
 	});*/
-});
 
 app.listen(3000, () => {
   console.log('Bookfinder listening on port 3000!')

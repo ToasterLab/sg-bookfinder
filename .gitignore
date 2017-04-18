@@ -39,3 +39,5 @@ jspm_packages
 .env
 bundle.js*
 *.html
+yarn.lock
+*.json

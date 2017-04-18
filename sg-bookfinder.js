@@ -77,8 +77,8 @@ let isbn2Availability = (isbn, title, library) => {
 			} else if(result.constructor === Object){
 				if(result.BranchID === library){
 					availability.push({
-						ISBN: isbn,
-						Title: title,
+						isbn: isbn,
+						title: title,
 						BranchID: result.BranchID,
 						BranchName: result.BranchName,
 						LocationDesc: result.LocationDesc,
@@ -121,7 +121,7 @@ bookfinder.prototype.isBookAvailable = (book, library) => {
 					if(v.Status !== "Not On Loan"){
 						result.splice(i,1);
 					}
-				});
+				})
 				resolve(result);
 			} else {resolve([]);}
 		}).catch(reject);

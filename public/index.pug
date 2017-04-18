@@ -4,27 +4,87 @@ html(lang="en")
 		title= Bookfinder
 		link(rel='stylesheet' href="bulma.css")
 		script(src='bundle.js')
+		style(type='text/css').
+			.cover{width:70px}
+			.spinner{margin:100px auto 0;width:200px;text-align:center}.spinner>div{width:50px;height:50px;background-color:#fff;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-.32s;animation-delay:-.32s}.spinner .bounce2{-webkit-animation-delay:-.16s;animation-delay:-.16s}@-webkit-keyframes sk-bouncedelay{0%,100%,80%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,100%,80%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}
 	body
 		section.section#app
 			.container.is-fluid(v-if='oauth')
-				.columns.is-multiline
+				nav.level
+					.level-left
+						.level-item
+							p.control
+								span.select
+									select(v-model="selected.shelf")
+										option(v-for="shelf in oauth.shelves || []",v-bind:value="shelf.name")
+											| {{shelf.name}} ({{shelf.book_count._}})
+						.level-item
+							p.control
+								span.select
+									select(v-model="selected.lib")
+										option(v-for="library in libraries",v-bind:value="library.id")
+											| {{library.name}}
+						.level-item
+							p.control
+								button.button.is-primary(@click="checkShelf") CHECK
+					.level-right
+						.level-item
+							figure.image.cover
+								img(v-bind:src="oauth.photo")
+						.level-item
+							a(v-bind:href="oauth.url")
+								| {{oauth.name}}
+				table.table
+					thead
+						tr
+							th cover
+							th title
+							th author
+							th avg rating
+							th library
+							th location
+							th call number
+					tbody
+						tr(v-if="books.length === 0 && !bookfinding")
+							td No books found in that library
+						tr(v-if="bookfinding")
+							td
+								progress(v-if="bookfinding")
+						tr(v-for="book in books")
+							td
+								figure.image.cover
+									img(v-bind:src="book[0].image")
+							td {{book[0].title}}
+							td {{book[0].authors.author[0].name[0]}}
+							td {{book[0].average_rating}}
+							td {{book[0].BranchName}}
+							td {{book[0].LocationDesc}}
+							td {{book[0].CallNumber}}
+				.columns.is-multilinev(v-if="false")
 					.column.is-one-quarter(v-for="book in books", @click="openBook(book)")
 						.card
-							.card-image
+							.card-image(v-if="false")
 								figure.image
-									img(v-bind:src="book.image")
+									img.cover(v-bind:src="book[0].image")
 							.card-content
 								.media
 									.media-content
-										p.title {{book.title}}
-										p.subtitle {{book.authors.author[0].name[0]}}
+										p.title {{book[0].title}}
+										p.subtitle {{book[0].authors.author[0].name[0]}}
 								.content
-									p
-									| {{book.description}}
-									p
-										small Published in {{book.published}}
-			.modal(v-if='oauth == false')
+									p(v-if="false")
+									| {{book[0].description}}
+									p(v-if="book[0].published")
+										small Published in {{book[0].published}}
+			.modal(v-bind:class="{'is-active' : oauth == false}")
 				.modal-background
 				.modal-content
 					p Oops, you're not logged in...
+			.modal(v-bind:class="{'is-active' : loading}")
+				.modal-background
+				.modal-content
+					.spinner
+						.bounce1
+						.bounce2
+						.bounce3
 		script(src='bookfinder.js')
