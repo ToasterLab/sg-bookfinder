@@ -6,7 +6,7 @@ let computeSlength =  () => {
 let wSend = (ws, event, data) => {ws.send(JSON.stringify({event:event,data:data}))}
 let user = localStorage.getItem("user")
 
-var socket = new WebSocket(`ws://${location.host}`)
+var socket = new WebSocket(`wss://${location.host}`)
 
 var app = new Vue({
 	el: '#app',

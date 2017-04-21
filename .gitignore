@@ -41,3 +41,4 @@ bundle.js*
 *.html
 yarn.lock
 *.json
+public/*

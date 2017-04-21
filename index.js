@@ -1,12 +1,20 @@
 /* jshint asi:true */
 const fs = require("fs"),
+			dotenv = require("dotenv"),
 			express = require("express"),
-			bodyParser = require('body-parser'),
 			expressWs = require('express-ws'),
-			bookfinder = require("./lib/sg-bookfinder.js");
+			bodyParser = require('body-parser')
 			
+const fbot = require("./lib/fbot"),
+			bookfinder = require("./lib/sg-bookfinder")
+
+dotenv.config() //prepare api keys from .env
+
 let app = express()
 let ews = expressWs(app)
+
+bookfinder.setup(process.env)
+fbot.setup(process.env)
 
 app.use(bodyParser.json())       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -19,8 +27,8 @@ app.use(express.static('./node_modules/bulma/css')) // bulma
 // error
 throwError = (res, err) => {res.send(JSON.stringify({error: err}))}
 
-let oauths = {};
-let curUsers = JSON.parse(fs.readFileSync("data.json", "utf8")) || [];
+let oauths = {}
+let curUsers = JSON.parse(fs.readFileSync("data.json", "utf8")) || []
 
 app.get('/login', (req, res) => {
 	bookfinder.getSignInURL().then(url => {
@@ -48,6 +56,9 @@ app.get('/callback', (req, res) => {
 		res.send("Oauth denied :(")
 	}
 })
+
+app.get('/fbot', fbot.incoming)
+app.post('/fbot', fbot.incoming)
 
 app.ws('/', (ws, req) => {
 	let wSend = (ws, event, data) => {ws.send(JSON.stringify({event:event,data:data}))}
