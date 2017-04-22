@@ -16,9 +16,9 @@ let ews = expressWs(app)
 bookfinder.setup(process.env)
 fbot.setup(process.env)
 
-app.use(bodyParser.json())       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
+app.use(bodyParser.json())			 // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({		 // to support URL-encoded bodies
+	extended: true
 }));
 
 app.use(express.static('public')) // html & bundle.js
@@ -62,22 +62,22 @@ app.post('/fbot', fbot.incoming)
 
 app.ws('/', (ws, req) => {
 	let wSend = (ws, event, data) => {ws.send(JSON.stringify({event:event,data:data}))}
-  ws.on('message', msg => {
-  	msg = JSON.parse(msg)
-  	console.log(msg)
-  	switch(msg.event){
-  		case "retrieveUser":
-  			let user = msg.data
-  			console.log(`${(new Date()).toLocaleString()} ${JSON.stringify(user)}`)
-  			bookfinder.setOAuth(user.accessToken, user.accessTokenSecret)
+	ws.on('message', msg => {
+		msg = JSON.parse(msg)
+		console.log(msg)
+		switch(msg.event){
+			case "retrieveUser":
+				let user = msg.data
+				console.log(`${(new Date()).toLocaleString()} ${JSON.stringify(user)}`)
+				bookfinder.setOAuth(user.accessToken, user.accessTokenSecret)
 				bookfinder.getUserInfo(user.id).then(user => {
-			  	wSend(ws, "sendUser", user)
+					wSend(ws, "sendUser", user)
 				}).catch(err => wSend(ws, "error", err))
-  			break
-  		
-  		case "getBooks":
-  			let usr = msg.data.user
-  			let assemblyLine = []
+				break
+			
+			case "getBooks":
+				let usr = msg.data.user
+				let assemblyLine = []
 				for(let i=1;i<=Math.ceil(msg.data.selected.slength/100);i++){
 					assemblyLine.push(
 						bookfinder.getBooksOnShelf(usr.id, msg.data.selected.shelf, i, 100, "d")
@@ -103,11 +103,11 @@ app.ws('/', (ws, req) => {
 						})
 					})
 				})
-  			break
-  	}
-  })
+				break
+		}
+	})
 })
 
 app.listen(8085, () => {
-  console.log('Bookfinder listening on port 8085!')
+	console.log('Bookfinder listening on port 8085!')
 })
