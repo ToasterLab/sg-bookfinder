@@ -40,5 +40,5 @@ jspm_packages
 bundle.js*
 *.html
 yarn.lock
-*.json
+data.json
 public/*

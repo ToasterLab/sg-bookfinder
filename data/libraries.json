@@ -1,0 +1,298 @@
+[
+	{
+		"id": "AMKPL",
+		"nickname": "AMK",
+		"name": "Ang Mo Kio Public Library",
+		"address": "4300 Ang Mo Kio Avenue 6   Singapore 569842",
+		"coords": "1.374784 103.845581",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/AngMoKio/MAIN-PICTURE-of-AMPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "BEPL",
+		"nickname": "Bedok",
+		"name": "Bedok Public Library",
+		"address": "21 Bedok North St. 1   Singapore 469659",
+		"coords": "1.326806 103.930924",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Bedok/MAIN-BEPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "BIPL",
+		"nickname": "Bishan",
+		"name": "Bishan Public Library",
+		"address": "5 Bishan Place  #01-01 Singapore 579841",
+		"coords": "1.349844 103.848840",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Bishan/MAIN-BIPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "BBPL",
+		"nickname": "Bukit Batok",
+		"name": "Bukit Batok Public Library",
+		"address": "1 Bukit Batok Central Link West Mall #03-01 Singapore 658713",
+		"coords": "1.349491 103.749285",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/BukitBatok/MAIN-BBPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "BMPL",
+		"nickname": "Bukit Merah",
+		"name": "Bukit Merah Public Library",
+		"address": "3779 Jalan Bukit Merah   Singapore 159462",
+		"coords": "1.284057 103.815621",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/BukitMerah/MAIN-BMPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "BPPL",
+		"nickname": "Bukit Panjang",
+		"name": "Bukit Panjang Public Library"
+	},
+	{
+		"id": "CLL",
+		"nickname": "Central",
+		"name": "Central Public Library",
+		"address": "100 Victoria Street National Library Board  Singapore 188064",
+		"coords": "1.297414 103.854235",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Central/MAIN-CTPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "CSPL",
+		"nickname": "Cheng San",
+		"name": "Cheng San Public Library",
+		"address": "90 Hougang Avenue 10 Hougang Mall #03-11 Singapore 538766",
+		"coords": "1.372566 103.893775",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/ChengSan/MAIN-CSPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "CCKPL",
+		"nickname": "CCK",
+		"name": "Choa Chu Kang Public Library",
+		"address": "21 Choa Chu Kang Avenue 4 Lot One Shoppers' Mall #04-01/02 Singapore 689812",
+		"coords": "1.384953 103.745039",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/ChoaChuKang/MAIN-CCKPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "CMPL",
+		"nickname": "Clementi",
+		"name": "Clementi Public Library",
+		"address": "3155 Commonwealth Avenue West The Clementi Mall #05-13/14/15 Singapore 129588",
+		"coords": "1.315056 103.764306",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Clementi/MAIN-CMPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "GEPL",
+		"nickname": "Geylang East",
+		"name": "Geylang East Public Library",
+		"address": "50 Geylang East Ave 1   Singapore 389777",
+		"coords": "1.317437 103.885837",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Geylang/MAIN-GEPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "JRL",
+		"nickname": "Jurong",
+		"name": "Jurong Regional Library",
+		"address": "21 Jurong East Central 1   Singapore 609732",
+		"coords": "1.332888 103.739243",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/JurongReg/MAIN-JRL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "JWPL",
+		"nickname": "Jurong West",
+		"name": "Jurong West Public Library",
+		"address": "60 Jurong West Central 3  #01-03 Singapore 648346",
+		"coords": "1.340630 103.704512",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/JurongWest/MAIN-JWPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "LKCRL",
+		"nickname": "Lee Kong Chian",
+		"name": "Lee Kong Chian Reference Library",
+		"address": "100 Victoria Street   Singapore 188064",
+		"coords": "1.297196 103.854287",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/images/CRW_0001.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "11LKCRL",
+		"name": "Lee Kong Chian Reference Library Level 11"
+	},
+	{
+		"id": "07LKCRL",
+		"name": "Lee Kong Chian Reference Library Level 7"
+	},
+	{
+		"id": "08LKCRL",
+		"name": "Lee Kong Chian Reference Library Level 8"
+	},
+	{
+		"id": "09LKCRL",
+		"name": "Lee Kong Chian Reference Library Level 9"
+	},
+	{
+		"id": "LSC",
+		"name": "Library Supply Centre"
+	},
+	{
+		"id": "LSCAV",
+		"name": "Library Supply Centre for AV"
+	},
+	{
+		"id": "CNPL",
+		"nickname": "Chinatown",
+		"name": "Library@Chinatown",
+		"address": "133 New Bridge Road Chinatown Point #04-12 Singapore 059413",
+		"coords": "1.285255 103.844943",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Chinatown/MAIN-CNPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "EPPL",
+		"nickname": "Esplanade",
+		"name": "Library@Esplanade",
+		"address": "8 Raffles Avenue  #03-01 Singapore 039802",
+		"coords": "1.289406 103.855770",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/esplanade/MAIN-EPPL.JPG",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "OCPL",
+		"nickname": "Orchard",
+		"name": "Library@Orchard",
+		"address": "277 Orchard Road Orchard Gateway  #03-12 / #04-11 Singapore 238858",
+		"coords": "1.300626 103.840191",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Orchard/OCPL_main.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "MPPL",
+		"nickname": "Marine Parade",
+		"name": "Marine Parade Public Library",
+		"address": "278 Marine Parade Road Marine Parade Community Building #01-02 Singapore 449282",
+		"coords": "1.304664 103.909581",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/MarineParade/MAIN-MPPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "MOLLEY",
+		"name": "Mobile Bus"
+	},
+	{
+		"id": "LOLC",
+		"name": "NL Heritage"
+	},
+	{
+		"id": "PRPL",
+		"nickname": "Pasir Ris",
+		"name": "Pasir Ris Public Library",
+		"address": "1 Pasir Ris Central St 3 White Sands #04-01/06 Singapore 518457",
+		"coords": "1.372351 103.949440",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/PasirRis/MAIN-PRPL-small.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "QUPL",
+		"nickname": "Queenstown",
+		"name": "Queenstown Public Library",
+		"address": "53 Margaret Drive   Singapore 149297",
+		"coords": "1.298706 103.805520",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/QueensTown/Main-QUPL_Cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+	    "id": "RU",
+	    "nickname": "Repository Used Books Collection",
+	    "name": "Repository Used Books Collection"
+	},
+	{
+		"id": "SBPL",
+		"nickname": "Sembawang",
+		"name": "Sembawang Public Library",
+		"address": "30 Sembawang Drive Sun Plaza #05-01 Singapore 757713",
+		"coords": "1.448190 103.819499",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Sembawang/SBPL_entrance.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "SKPL",
+		"nickname": "Sengkang",
+		"name": "Sengkang Public Library",
+		"address": "1 Sengkang Square  #04-26/27 Compass Point Singapore 545078",
+		"coords": "1.391322 103.894688",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Senkang/MAIN-SKPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "SRPL",
+		"nickname": "Serangoon",
+		"name": "Serangoon Public Library",
+		"address": "23 Serangoon Central NEX #04-82/83 Singapore 556083",
+		"coords": "1.350639 103.871813",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/Serangoon/MAIN-SRPL-cropped.jpg",
+		"hours": "Mon - Sun: 11:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "TRL",
+		"nickname": "Tampines",
+		"name": "Tampines Regional Library",
+		"address": "31 Tampines Ave 7   Singapore 529620",
+		"coords": "1.356285 103.944556",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/TampinesReg/Entrance-TRL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "TPPL",
+		"nickname": "Toa Payoh",
+		"name": "Toa Payoh Public Library",
+		"address": "6 Toa Payoh Central   Singapore 319191",
+		"coords": "1.333618 103.850969",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/ToaPayoh/MAIN-TPPL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "WRL",
+		"nickname": "Woodlands",
+		"name": "Woodlands Regional Library",
+		"address": "900 South Woodlands Drive  #01-03 Singapore 730900",
+		"coords": "1.435030 103.786928",
+		"img": "http://www.nlb.gov.sg/Portals/0/library/gallery/WoodlandsReg/MAIN-WRL-cropped.jpg",
+		"hours": "Mon - Sun: 10:00 AM - 09:00 PM",
+		"contact": "helpdesk@library.nlb.gov.sg"
+	},
+	{
+		"id": "YIPL",
+		"name": "Yishun Public Library"
+	}
+]
