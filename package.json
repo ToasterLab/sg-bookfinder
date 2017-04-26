@@ -30,6 +30,7 @@
     "dotenv": "*",
     "express": "^4.15.2",
     "express-ws": "^3.0.0",
+    "google-books-search": "^0.3.1",
     "http": "0.0.0",
     "nlb": "*",
     "oauth": "^0.9.15",
