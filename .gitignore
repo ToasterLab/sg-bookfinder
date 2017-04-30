@@ -41,4 +41,5 @@ bundle.js*
 *.html
 yarn.lock
 data.json
+fbot_data.json
 public/*

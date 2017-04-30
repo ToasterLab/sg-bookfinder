@@ -31,10 +31,11 @@ let oauths = {}
 let curUsers = JSON.parse(fs.readFileSync("data.json", "utf8")) || []
 
 app.get('/login', (req, res) => {
+	bookfinder.configure(null, null, "https://bookwhere.ketupat.me/callback")
 	bookfinder.getSignInURL().then(url => {
 		oauths[url.oauthToken] = {
 			oauthTokenSecret: url.oauthTokenSecret
-		};
+		}
 		res.send(JSON.stringify({url: url}))
 	}).catch(err => throwError(res,err))
 })
@@ -48,9 +49,9 @@ app.get('/callback', (req, res) => {
 				accessToken: result.accessToken,
 				accessTokenSecret: result.accessTokenSecret
 			}
-			curUsers.push(user);
-			fs.writeFileSync("data.json",JSON.stringify(curUsers));
-			res.send(`<script>localStorage.setItem("user", '${JSON.stringify(user)}');window.location.href='http://bookfinder.ketupat.me'</script>`);
+			curUsers.push(user)
+			fs.writeFileSync("data.json",JSON.stringify(curUsers))
+			res.send(`<script>localStorage.setItem("user", '${JSON.stringify(user)}');window.location.href='http://bookfinder.ketupat.me'</script>`)
 		}).catch(err => {console.log(err)})
 	} else {
 		res.send("Oauth denied :(")
@@ -59,6 +60,8 @@ app.get('/callback', (req, res) => {
 
 app.get('/fbot', fbot.incoming)
 app.post('/fbot', fbot.incoming)
+
+app.get('/fbot_callback', fbot.callback)
 
 app.ws('/', (ws, req) => {
 	let wSend = (ws, event, data) => {ws.send(JSON.stringify({event:event,data:data}))}
@@ -77,32 +80,13 @@ app.ws('/', (ws, req) => {
 			
 			case "getBooks":
 				let usr = msg.data.user
-				let assemblyLine = []
-				for(let i=1;i<=Math.ceil(msg.data.selected.slength/100);i++){
-					assemblyLine.push(
-						bookfinder.getBooksOnShelf(usr.id, msg.data.selected.shelf, i, 100, "d")
-					)
-				}
-				let counter = 0
-				let allBooks = []
-				assemblyLine.forEach(p => {
-					p.then(result => {
-						books = result
-						//books = result.reduce((acc, val) => acc.concat(val))
-						books.forEach(book => {
-							bookfinder.isBookAvailable(book, msg.data.selected.lib).then(result => {
-								counter++
-								if(result.length > 0){
-									allBooks.push(result)
-									wSend(ws, "sendBooks", result)
-								}
-								if(counter === parseInt(msg.data.selected.slength)){
-									wSend(ws, "endBooks", allBooks)
-								}
-							}).catch(err => console.error(err))
-						})
-					})
-				})
+				bookfinder.getAllAvailableBooksOnShelf(
+					usr, msg.data.selected.shelf, 
+					msg.data.selected.slength,
+					msg.data.selected.lib,
+					interim => wSend(ws, "sendBooks", interim)
+				).then(result => wSend(ws, "endBooks", result))
+				.catch(err => console.error(err))
 				break
 		}
 	})
